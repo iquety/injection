@@ -18,7 +18,7 @@ class Ioc extends IocAbstract implements IocInterface
      * @param ArrayObject<int,string> $object
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function __construct(ArrayObject $object, stdClass $class = null)
+    public function __construct(ArrayObject $object, ?stdClass $class = null)
     {
         $this->values = func_get_args();
     }
