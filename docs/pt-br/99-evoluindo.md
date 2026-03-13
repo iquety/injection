@@ -1,6 +1,7 @@
 # Evoluindo a biblioteca
 
---page-nav--
+[◂ Inversão de Controle](02-inversao-de-controle.md) | [Índice da documentação ▸](indice.md)
+-- | --
 
 ## 1. Infraestrutura
 
@@ -22,7 +23,7 @@ São as seguintes ferramentas:
 
 - [PHP Unit](https://phpunit.de)
 - [PHP Stan](https://phpstan.org)
-- [PHP Code Sniffer](https://github.com/squizlabs/PHP_CodeSniffer)
+- [PHP CS Fixer](https://cs.symfony.com/doc/usage.html)
 - [PHP MD](https://phpmd.org)
 - [Super Linter](https://github.com/super-linter/super-linter)
 
@@ -53,8 +54,11 @@ Caso seja necessário, é possível executá-las de forma individual:
 ```
 
 ```bash
-# Execute o Code Sniffer
-./composer psr
+# Executa a checagem de padrões
+./composer psr-check
+
+# Corrige os padrões possíveis
+./composer psr-fix
 ```
 
 ### 2.3. Testes automatizados
@@ -79,4 +83,5 @@ gerar a documentação navegável no diretório `docs`:
 composer docmap
 ```
 
---page-nav--
+[◂ Inversão de Controle](02-inversao-de-controle.md) | [Índice da documentação ▸](indice.md)
+-- | --

@@ -1,6 +1,6 @@
 # Inversão de Controle
 
-[◂ Container](01-container.md) | [Índice da documentação](indice.md) | [Evoluindo a biblioteca ▸](99-evoluindo-a-biblioteca.md)
+[◂ Container](01-container.md) | [Índice da documentação](indice.md) | [Evoluindo a biblioteca ▸](99-evoluindo.md)
 -- | -- | --
 
 ## 1. Introdução
@@ -97,5 +97,5 @@ $inversion = new InversionOfControl($container);
 $inversion->resolveTo(MinhaInterface::class, 'MinhaClasse::meuMetodo');
 ```
 
-[◂ Container](01-container.md) | [Índice da documentação](indice.md) | [Evoluindo a biblioteca ▸](99-evoluindo-a-biblioteca.md)
+[◂ Container](01-container.md) | [Índice da documentação](indice.md) | [Evoluindo a biblioteca ▸](99-evoluindo.md)
 -- | -- | --

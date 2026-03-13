@@ -1,6 +1,6 @@
 # Inversion of Control
 
-[◂ Container](01-container.md) | [Documentation index](index.md) | [Evolving the library ▸](99-improving-the-library.md)
+[◂ Container](01-container.md) | [Documentation index](index.md) | [Evolving the library ▸](99-evolution.md)
 -- | -- | --
 
 ## 1. Introduction
@@ -96,5 +96,5 @@ $inversion = new InversionOfControl($container);
 $inversion->resolveTo(MyInterface::class, 'MyClass::myMethod');
 ```
 
-[◂ Container](01-container.md) | [Documentation index](index.md) | [Evolving the library ▸](99-improving-the-library.md)
+[◂ Container](01-container.md) | [Documentation index](index.md) | [Evolving the library ▸](99-evolution.md)
 -- | -- | --
