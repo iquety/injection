@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Iquety\Injection;
 
-use Closure;
-use Iquety\Injection\ContainerException;
-use Iquety\Injection\NotFoundException;
 use Psr\Container\ContainerInterface;
 use Throwable;
 
@@ -94,6 +91,11 @@ class Container implements ContainerInterface
         return $this->resolveFactory($id, $arguments);
     }
 
+    public function has(string $id): bool
+    {
+        return isset($this->factory[$id]) || isset($this->singleton[$id]);
+    }
+
     /**
      * @param array<int,mixed> $arguments
      * @throws ContainerException
@@ -151,10 +153,5 @@ class Container implements ContainerInterface
 
         // se não for um callable ou assinatura de classe, retorna o próprio valor
         return $resolved;
-    }
-
-    public function has(string $id): bool
-    {
-        return isset($this->factory[$id]) || isset($this->singleton[$id]);
     }
 }

@@ -6,23 +6,17 @@ namespace Iquety\Injection;
 
 use Closure;
 use InvalidArgumentException;
-use Iquety\Injection\ContainerException;
-use Iquety\Injection\NotFoundException;
 use Psr\Container\ContainerInterface;
 use ReflectionClass;
 use ReflectionFunction;
 use ReflectionMethod;
 use ReflectionParameter;
-use Reflector;
-use UnhandledMatchError;
 
 class InversionOfControl
 {
     private string $forceInstanceOf = '';
 
-    public function __construct(private ContainerInterface $container)
-    {
-    }
+    public function __construct(private ContainerInterface $container) {}
 
     /**
      * Invoca um objeto ou classe através do container.
@@ -30,10 +24,10 @@ class InversionOfControl
      * array: [Controller, action]
      * object: new Controller()
      * callable: "Controller" ou function() {}
-     * @param string|array<string,string>|object|callable $callable
+     * @param array<string,string>|callable|object|string $callable
      * @param array<string,mixed> $arguments
      */
-    public function resolve(string|array|object|callable $callable, array $arguments = []): mixed
+    public function resolve(array|callable|object|string $callable, array $arguments = []): mixed
     {
         $this->forceInstanceOf = '';
 
@@ -47,12 +41,12 @@ class InversionOfControl
      * object: new Controller()
      * callable: "Controller" ou function() {}
      * @param string $allowedContract
-     * @param string|array<string,string>|object|callable $callable
+     * @param array<string,string>|callable|object|string $callable
      * @param array<string,mixed> $arguments
      */
     public function resolveTo(
         string $allowedContract,
-        string|array|object|callable $callable,
+        array|callable|object|string $callable,
         array $arguments = []
     ): mixed {
 
@@ -62,11 +56,11 @@ class InversionOfControl
     }
 
     /**
-     * @param string|array<string,string>|object|callable $callable
+     * @param array<string,string>|callable|object|string $callable
      * @param array<string,mixed> $arguments
      * @SuppressWarnings(PHPMD.StaticAccess)
      */
-    private function resolveRaw(string|array|object|callable $callable, array $arguments = []): mixed
+    private function resolveRaw(array|callable|object|string $callable, array $arguments = []): mixed
     {
         $info = $this->callableInfo($callable);
 
@@ -82,11 +76,11 @@ class InversionOfControl
     }
 
     /**
-     * @param string|array<string,string>|object|callable $callable
+     * @param array<string,string>|callable|object|string $callable
      * @return array<string,mixed>
      * @throws ContainerException para injeções impossíveis
      */
-    private function callableInfo(string|array|object|callable $callable): array
+    private function callableInfo(array|callable|object|string $callable): array
     {
         $info = [
             'type'     => 'unresolved',
@@ -94,7 +88,7 @@ class InversionOfControl
             'callable' => '',
         ];
 
-        if (is_string($callable) === true && strpos($callable, '::') !== false) {
+        if (is_string($callable) === true && str_contains($callable, '::')) {
             $callable = explode('::', $callable);
         }
 
@@ -115,7 +109,7 @@ class InversionOfControl
         }
 
         if (is_callable($callable) === false) {
-            throw new ContainerException("Impossible to inject " . gettype($callable) . " dependency");
+            throw new ContainerException('Impossible to inject ' . gettype($callable) . ' dependency');
         }
 
         $info['type'] = 'function';
@@ -151,7 +145,7 @@ class InversionOfControl
     }
 
     /**
-     * @param object|class-string $objectOrClass
+     * @param class-string|object $objectOrClass
      * @param array<string,mixed> $arguments
     */
     private function invokeClass(object|string $objectOrClass, string $methodName, array $arguments): mixed
@@ -205,7 +199,7 @@ class InversionOfControl
      * @param array<string,mixed> $arguments
      * @return array<int,mixed>
     */
-    private function argumentsInjected(ReflectionMethod|ReflectionFunction $reflection, array $arguments): array
+    private function argumentsInjected(ReflectionFunction|ReflectionMethod $reflection, array $arguments): array
     {
         $reflect = function (ReflectionParameter $param) use ($reflection, $arguments) {
             $name = $param->getName();

@@ -44,7 +44,7 @@ class RegisterGetTest extends TestCase
         $this->assertEquals([], $retrieveOne->getArrayCopy());
 
         // muda o estado do singleton obtido
-        $retrieveOne->append("abc");
+        $retrieveOne->append('abc');
 
         // obtém novamente o singleton via container
         /** @var ArrayObject<int, string> */

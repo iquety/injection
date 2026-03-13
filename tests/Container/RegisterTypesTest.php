@@ -49,7 +49,7 @@ class RegisterTypesTest extends TestCase
         $container->addFactory('myarray', $array);
         $this->assertEquals($array, $container->get('myarray'));
 
-        $object = (object)['one', 'two', 'three'];
+        $object = (object) ['one', 'two', 'three'];
         $container->addFactory('myobject', $object);
         $this->assertEquals($object, $container->get('myobject'));
     }
@@ -58,7 +58,7 @@ class RegisterTypesTest extends TestCase
     public function registerClosure(): void
     {
         $container = new Container();
-        $container->addFactory('id', fn() => "kkk");
+        $container->addFactory('id', fn() => 'kkk');
         $this->assertEquals('kkk', $container->get('id'));
     }
 

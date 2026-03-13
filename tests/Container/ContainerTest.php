@@ -85,11 +85,11 @@ class ContainerTest extends TestCase
         $this->assertEquals('parangarikotirimirruaro', $container->get('id'));
 
         $container = new Container();
-        $container->addFactory('id', fn() => "kkk");
+        $container->addFactory('id', fn() => 'kkk');
         $this->assertEquals('kkk', $container->get('id'));
 
         $container = new Container();
-        $container->addFactory('id', "ArrayObject");
+        $container->addFactory('id', 'ArrayObject');
         $this->assertInstanceOf(ArrayObject::class, $container->get('id'));
     }
 
@@ -148,7 +148,7 @@ class ContainerTest extends TestCase
         $this->assertEquals([], $retrieveOne->getArrayCopy());
 
         // muda o estado da dependencia
-        $retrieveOne->append("abc");
+        $retrieveOne->append('abc');
 
         /** @var ArrayObject<int, string> */
         $retrieveTwo = $container->get(ArrayObject::class);
