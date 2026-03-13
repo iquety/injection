@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Container\Ioc;
+namespace Tests\Ioc;
 
 use ArrayObject;
 use DateTime;
@@ -11,9 +11,7 @@ use Iquety\Injection\Container;
 use Iquety\Injection\InversionOfControl;
 use Tests\Ioc\Support\Ioc;
 use Tests\Ioc\Support\IocAbstract;
-use Tests\Ioc\Support\IocExtended;
 use Tests\Ioc\Support\IocInterface;
-use Tests\Ioc\Support\IocNoConstructor;
 use Tests\TestCase;
 
 class InvocationContractTest extends TestCase
@@ -22,10 +20,10 @@ class InvocationContractTest extends TestCase
     public function contractOkProvider(): array
     {
         return [
-            'explicity' => [ Ioc::class . "::injectedMethod" ],
-            'explicity static' => [ Ioc::class . "::injectedStaticMethod" ],
-            'contract array' => [ array(Ioc::class, "injectedMethod") ],
-            'instance array' => [ array(new Ioc(new ArrayObject()), "injectedMethod") ],
+            'explicity' => [ Ioc::class . '::injectedMethod' ],
+            'explicity static' => [ Ioc::class . '::injectedStaticMethod' ],
+            'contract array' => [ [Ioc::class, 'injectedMethod'] ],
+            'instance array' => [ [new Ioc(new ArrayObject()), 'injectedMethod'] ],
             'instance object' => [ new Ioc(new ArrayObject()) ], // __invoke(ArrayObject $o)
         ];
     }
@@ -109,7 +107,7 @@ class InvocationContractTest extends TestCase
 
         // $caller <- injeta ArrayObject como argumento
 
-        $value = $control->resolveTo(DateTime::class, "declaredFunction");
+        $value = $control->resolveTo(DateTime::class, 'declaredFunction');
 
         $this->assertEquals([ 'x' ], $value);
     }

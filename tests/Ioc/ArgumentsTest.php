@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Container\Ioc;
+namespace Tests\Ioc;
 
 use ArrayObject;
 use Iquety\Injection\Container;
@@ -22,10 +22,10 @@ class ArgumentsTest extends TestCase
         $control = new InversionOfControl($container);
 
         $value = $control->resolve(
-            Ioc::class . "::injectedMethodExtraArguments", // <- injeta ArrayObject
-            [ "id" => "1", "name" => "Ricardo"] // <- acrescenta  $id + $name
+            Ioc::class . '::injectedMethodExtraArguments', // <- injeta ArrayObject
+            [ 'id' => '1', 'name' => 'Ricardo'] // <- acrescenta  $id + $name
         );
-        $this->assertSame([ 'x', 1, "Ricardo" ], $value);
+        $this->assertSame([ 'x', 1, 'Ricardo' ], $value);
     }
 
     /** @test */
@@ -33,7 +33,7 @@ class ArgumentsTest extends TestCase
     {
         $this->expectException(NotFoundException::class);
         $this->expectExceptionMessage(
-            "It was not possible to resolve the value for parameter (\$name) in method (injectedMethodExtraArguments)"
+            'It was not possible to resolve the value for parameter ($name) in method (injectedMethodExtraArguments)'
         );
 
         $container = new Container();
@@ -41,8 +41,8 @@ class ArgumentsTest extends TestCase
 
         $control = new InversionOfControl($container);
         $control->resolve(
-            Ioc::class . "::injectedMethodExtraArguments", // <- injeta ArrayObject
-            [ "id" => "1", ] // <- acrescenta  $id, mas esquece do $name
+            Ioc::class . '::injectedMethodExtraArguments', // <- injeta ArrayObject
+            [ 'id' => '1', ] // <- acrescenta  $id, mas esquece do $name
         );
     }
 
@@ -50,14 +50,14 @@ class ArgumentsTest extends TestCase
     public function valuedArgumentsProvider(): array
     {
         return [
-            [ array("id" => "1", "name" => "Pereira"), array( 1, "Pereira") ],
-            [ array("id" => "1"), array( 1, "Ricardo") ],
+            [ ['id' => '1', 'name' => 'Pereira'], [ 1, 'Pereira'] ],
+            [ ['id' => '1'], [ 1, 'Ricardo'] ],
 
-            [ array("id" => 1, "name" => "Pereira"), array( 1, "Pereira") ],
-            [ array("id" => 1), array( 1, "Ricardo") ],
+            [ ['id' => 1, 'name' => 'Pereira'], [ 1, 'Pereira'] ],
+            [ ['id' => 1], [ 1, 'Ricardo'] ],
 
-            [ array("name" => "Pereira"), array( 33, "Pereira") ],
-            [ array(), array( 33, "Ricardo") ],
+            [ ['name' => 'Pereira'], [ 33, 'Pereira'] ],
+            [ [], [ 33, 'Ricardo'] ],
         ];
     }
 
@@ -75,10 +75,10 @@ class ArgumentsTest extends TestCase
         $control = new InversionOfControl($container);
 
         $value = $control->resolve(
-            Ioc::class . "::injectedMethodExtraDefaultValueArguments", // <- injeta ArrayObject
+            Ioc::class . '::injectedMethodExtraDefaultValueArguments', // <- injeta ArrayObject
             $arguments // <- acrescenta  $id + $name
         );
 
-        $this->assertSame(array_merge(["x"], $values), $value);
+        $this->assertSame(array_merge(['x'], $values), $value);
     }
 }

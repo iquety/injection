@@ -23,38 +23,47 @@ class Ioc extends IocAbstract implements IocInterface
         $this->values = func_get_args();
     }
 
+    /**
+     * @param ArrayObject<int,string> $object
+     * @return array<int,string>
+    */
+    public function __invoke(ArrayObject $object): array
+    {
+        return $object->getArrayCopy();
+    }
+
     /** @return array<int,string> */
     public function values(): array
     {
         return $this->values;
     }
 
-     /**
-     * @param ArrayObject<int,string> $object
-     * @return array<int,mixed>
+    /**
+    * @param ArrayObject<int,string> $object
+    * @return array<int,mixed>
     */
     public function injectedMethod(ArrayObject $object): array
     {
         return $object->getArrayCopy();
     }
 
-     /**
-     * @param ArrayObject<int,string> $object
-     * @return array<int,mixed>
+    /**
+    * @param ArrayObject<int,string> $object
+    * @return array<int,mixed>
     */
     public function injectedMethodExtraArguments(ArrayObject $object, int $id, string $name): array
     {
         return [ current($object->getArrayCopy()), $id, $name ];
     }
 
-     /**
-     * @param ArrayObject<int,string> $object
-     * @return array<int,mixed>
+    /**
+    * @param ArrayObject<int,string> $object
+    * @return array<int,mixed>
     */
     public function injectedMethodExtraDefaultValueArguments(
         ArrayObject $object,
         int $id = 33,
-        string $name = "Ricardo"
+        string $name = 'Ricardo'
     ): array {
         return [ current($object->getArrayCopy()), $id, $name ];
     }
@@ -64,15 +73,6 @@ class Ioc extends IocAbstract implements IocInterface
      * @return array<int,string>
     */
     public static function injectedStaticMethod(ArrayObject $object): array
-    {
-        return $object->getArrayCopy();
-    }
-
-    /**
-     * @param ArrayObject<int,string> $object
-     * @return array<int,string>
-    */
-    public function __invoke(ArrayObject $object): array
     {
         return $object->getArrayCopy();
     }

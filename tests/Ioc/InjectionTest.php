@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Container\Ioc;
+namespace Tests\Ioc;
 
 use ArrayObject;
 use Iquety\Injection\Container;
@@ -27,7 +27,7 @@ class InjectionTest extends TestCase
 
         // o método ContainerIoc->values devolve um array com os valores setados
         // no construtor __construct(ArrayObject $object, stdClass $class = null)
-        $results = $control->resolve(Ioc::class . "::values");
+        $results = $control->resolve(Ioc::class . '::values');
         $this->assertInstanceOf(ArrayObject::class, $results[0]);
         $this->assertInstanceOf(stdClass::class, $results[1]);
     }
@@ -37,21 +37,21 @@ class InjectionTest extends TestCase
     {
         $this->expectException(NotFoundException::class);
         $this->expectExceptionMessage(
-            "It was not possible to resolve the value for parameter (\$object) in method (__construct)"
+            'It was not possible to resolve the value for parameter ($object) in method (__construct)'
         );
 
         $control = new InversionOfControl(new Container());
-        $control->resolve(Ioc::class . "::values");
+        $control->resolve(Ioc::class . '::values');
     }
 
     /** @test */
     public function containerException(): void
     {
         $this->expectException(ContainerException::class);
-        $this->expectExceptionMessage("Impossible to inject string dependency");
+        $this->expectExceptionMessage('Impossible to inject string dependency');
 
         $control = new InversionOfControl(new Container());
-        $control->resolve("values");
+        $control->resolve('values');
     }
 
     /** @test */
@@ -59,10 +59,10 @@ class InjectionTest extends TestCase
     {
         $this->expectException(NotFoundException::class);
         $this->expectExceptionMessage(
-            "It was not possible to resolve the value for parameter (\$object) in method (injectedMethod)"
+            'It was not possible to resolve the value for parameter ($object) in method (injectedMethod)'
         );
 
         $control = new InversionOfControl(new Container());
-        $control->resolve(IocNoConstructor::class . "::injectedMethod");
+        $control->resolve(IocNoConstructor::class . '::injectedMethod');
     }
 }

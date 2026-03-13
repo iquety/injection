@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Container\Ioc;
+namespace Tests\Ioc;
 
 use ArrayObject;
 use Iquety\Injection\Container;
@@ -17,14 +17,14 @@ class InvocationTest extends TestCase
     public function methodsInvocationProvider(): array
     {
         return [
-            'explicity' => [ Ioc::class . "::injectedMethod" ],
-            'explicity no constructor' => [ IocNoConstructor::class . "::injectedMethod" ],
-            'explicity static' => [ Ioc::class . "::injectedStaticMethod" ],
-            'contract array' => [ array(Ioc::class, "injectedMethod") ],
-            'instance array' => [ array(new Ioc(new ArrayObject()), "injectedMethod") ],
+            'explicity' => [ Ioc::class . '::injectedMethod' ],
+            'explicity no constructor' => [ IocNoConstructor::class . '::injectedMethod' ],
+            'explicity static' => [ Ioc::class . '::injectedStaticMethod' ],
+            'contract array' => [ [Ioc::class, 'injectedMethod'] ],
+            'instance array' => [ [new Ioc(new ArrayObject()), 'injectedMethod'] ],
             'instance object' => [ new Ioc(new ArrayObject()) ], // __invoke(ArrayObject $o)
             'closure' => [ fn(ArrayObject $object) => $object->getArrayCopy() ],
-            'function' => [ "declaredFunction" ],
+            'function' => [ 'declaredFunction' ],
         ];
     }
 
