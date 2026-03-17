@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7cf5575f244a382d0beb6e8c083b99c4",
+    "content-hash": "f48db655645ee9fccbd3d2ca766cb583",
     "packages": [
         {
             "name": "psr/container",
@@ -752,29 +752,29 @@
         },
         {
             "name": "iquety/console",
-            "version": "v4.0.0",
+            "version": "v4.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/iquety/console.git",
-                "reference": "ceb55c3724ecd975b222e6cf28f07c8d734a9c30"
+                "reference": "9fa9670ce5275235c766141a2ed12d71cd289a0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/iquety/console/zipball/ceb55c3724ecd975b222e6cf28f07c8d734a9c30",
-                "reference": "ceb55c3724ecd975b222e6cf28f07c8d734a9c30",
+                "url": "https://api.github.com/repos/iquety/console/zipball/9fa9670ce5275235c766141a2ed12d71cd289a0b",
+                "reference": "9fa9670ce5275235c766141a2ed12d71cd289a0b",
                 "shasum": ""
             },
             "require": {
-                "iquety/security": "dev-main",
+                "iquety/security": "@stable",
                 "php": "^8.4.0"
             },
             "require-dev": {
                 "codacy/coverage": "dev-master",
+                "friendsofphp/php-cs-fixer": "^3.94",
                 "iquety/docmap": "*",
-                "phpmd/phpmd": "@stable",
+                "phpmd/phpmd": "^2.15",
                 "phpstan/phpstan": "^1.8",
-                "phpunit/phpunit": "^9",
-                "squizlabs/php_codesniffer": "3.*"
+                "phpunit/phpunit": "^9.5"
             },
             "type": "tool",
             "autoload": {
@@ -794,34 +794,34 @@
             ],
             "support": {
                 "issues": "https://github.com/iquety/console/issues",
-                "source": "https://github.com/iquety/console/tree/v4.0.0"
+                "source": "https://github.com/iquety/console/tree/v4.1.2"
             },
-            "time": "2026-02-02T23:09:50+00:00"
+            "time": "2026-03-17T17:14:32+00:00"
         },
         {
             "name": "iquety/docmap",
-            "version": "v2.1.2",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/iquety/docmap.git",
-                "reference": "3168173f0c94b2b4f263844339920ff34b486149"
+                "reference": "194aead144f2947cb933b5a1610f1cf79e0d47e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/iquety/docmap/zipball/3168173f0c94b2b4f263844339920ff34b486149",
-                "reference": "3168173f0c94b2b4f263844339920ff34b486149",
+                "url": "https://api.github.com/repos/iquety/docmap/zipball/194aead144f2947cb933b5a1610f1cf79e0d47e7",
+                "reference": "194aead144f2947cb933b5a1610f1cf79e0d47e7",
                 "shasum": ""
             },
             "require": {
                 "iquety/console": "*",
-                "php": "^8.3"
+                "php": "^8.4"
             },
             "require-dev": {
                 "codacy/coverage": "dev-master",
-                "phpmd/phpmd": "@stable",
+                "friendsofphp/php-cs-fixer": "^3.94",
+                "phpmd/phpmd": "^2.15",
                 "phpstan/phpstan": "^1.8",
-                "phpunit/phpunit": "^9",
-                "squizlabs/php_codesniffer": "3.*"
+                "phpunit/phpunit": "^9.5"
             },
             "bin": [
                 "docmap"
@@ -844,13 +844,13 @@
             ],
             "support": {
                 "issues": "https://github.com/iquety/docmap/issues",
-                "source": "https://github.com/iquety/docmap/tree/v2.1.2"
+                "source": "https://github.com/iquety/docmap/tree/v2.2.0"
             },
-            "time": "2026-02-03T00:11:16+00:00"
+            "time": "2026-03-13T19:36:10+00:00"
         },
         {
             "name": "iquety/security",
-            "version": "dev-main",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/iquety/security.git",
@@ -873,7 +873,6 @@
                 "phpstan/phpstan": "^1.8",
                 "phpunit/phpunit": "^9.5"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -892,7 +891,7 @@
             ],
             "support": {
                 "issues": "https://github.com/iquety/security/issues",
-                "source": "https://github.com/iquety/security/tree/main"
+                "source": "https://github.com/iquety/security/tree/v2.2.0"
             },
             "time": "2026-03-13T18:39:56+00:00"
         },
@@ -5195,7 +5194,7 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "stability-flags": {
         "codacy/coverage": 20
     },

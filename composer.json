@@ -4,6 +4,7 @@
     "description": "library for implementing Dependency Injection and Inversion of Control",
     "keywords": ["freep", "dependency injection", "container", "inversion of control"],
     "license": "MIT",
+    "minimum-stability": "stable",
     "require": {
         "php": "^8.4",
         "psr/container": "^2.0"
@@ -31,7 +32,6 @@
         "preferred-install": "dist",
         "sort-packages": true
     },
-    "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts" : {
         "test": [
